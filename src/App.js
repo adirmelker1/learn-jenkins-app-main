@@ -1,7 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  fetch("http://192.168.1.1/api/data");
   return (
     <div className="App">
       <header className="App-header">
@@ -15,9 +16,7 @@ function App() {
           Learn Jenkins on Udemy
         </a>
       </header>
-      <p>
-          Application version: 1
-      </p>
+      <p>Application version: 1</p>
     </div>
   );
 }

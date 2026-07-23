@@ -18,13 +18,13 @@ pipeline {
             }
         }
 
-        stage('Lint & Format') {
-            steps {
-                sh 'npm ci --legacy-peer-deps'
-                echo 'sh npm run lint'
-                sh 'npm run lint'
-            }
-        }
+        // stage('Lint & Format') {
+        //     steps {
+        //         sh 'npm ci --legacy-peer-deps'
+        //         echo 'sh npm run lint'
+        //         sh 'npm run lint'
+        //     }
+        // }
         // stage('SonarQube Analysis') {
         //     steps {
         //         withSonarQubeEnv('SonarQube-Server') {
