@@ -25,29 +25,29 @@ pipeline {
                 sh 'npm run lint'
             }
         }
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube-Server') {
-                    sh 'sonar-scanner'
-                }
-            }
-        }
-
         // stage('SonarQube Analysis') {
         //     steps {
-        //         script {
-        //             // ג'נקינס יתקין ויביא את הנתיב של הסורק שהגדרת ב-Tools תחת השם 'SonarQube-Scanner'
-        //             def scannerHome = tool 'SonarQube-Scanner'
-
-        //             // הרצת הסריקה באמצעות שימוש בנתיב המלא של הסורק שהותקן
-        //             withSonarQubeEnv('SonarQube-Server') {
-        //                 sh "${scannerHome}/bin/sonar-scanner \
-        //                     -Dsonar.projectKey=my-jenkins-app \
-        //                     -Dsonar.sources=."
-        //             }
+        //         withSonarQubeEnv('SonarQube-Server') {
+        //             sh 'sonar-scanner'
         //         }
         //     }
         // }
+
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    // ג'נקינס יתקין ויביא את הנתיב של הסורק שהגדרת ב-Tools תחת השם 'SonarQube-Scanner'
+                    def scannerHome = tool 'SonarQube-Scanner'
+
+                    // הרצת הסריקה באמצעות שימוש בנתיב המלא של הסורק שהותקן
+                    withSonarQubeEnv('SonarQube-Server') {
+                        sh "${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.projectKey=my-jenkins-app \
+                            -Dsonar.sources=."
+                    }
+                }
+            }
+        }
 
         // stage('SonarQube Quality Gate') {
         //     steps {
