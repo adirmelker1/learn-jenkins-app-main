@@ -2,7 +2,6 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  fetch("http://192.168.1.1/api/data");
   return (
     <div className="App">
       <header className="App-header">
